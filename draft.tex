@@ -1,0 +1,71 @@
+\documentclass[aps,twocolumn,showpacs,preprintnumbers,nofootinbib,prl,superscriptaddress,groupedaddress]{revtex4-2}
+
+% packages
+\usepackage{amssymb,graphicx}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{epsfig}
+\usepackage[usenames]{color} 
+\usepackage[export]{adjustbox}
+\usepackage{mathtools}
+\usepackage{hyperref}
+
+% you can define your own shortcuts etc, if you use sth very often
+\newcommand{\balign}{\begin{align}}
+\newcommand{\ealign}{\end{align}}
+
+% or you can define your own symbols, check what this is
+\def\meff{m_{\textrm{eff}}}
+
+
+% here is where the document begins
+\begin{document}
+
+\title{PHYS 414 Term Project}
+\author{G\"{o}rkem \c{C}avu\c{s}o\u{g}lu} % turkish characters require special handling
+\affiliation{Department of Physics, Ko\c{c} University, \\
+Rumelifeneri Yolu, 34450 Sariyer, Istanbul, Turkey }
+\date{\today}
+
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Part A}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+$\frac{d m(r)}{dr}= 4\pi r^2 \rho(r)$   and $\frac{dp(r)}{dr} = -\frac{Gm(r)\rho(r)}{r^2}$
+After rearranging terms of equation (2) such that only $m(r)$ appear at right-handside as a function of r,
+$$\frac{r^2}{\rho(r)}\frac{dp(r)}{dr} = -Gm(r)$$
+Taking derivatives of both sides, and using equation (1) yield
+$$\frac{d}{dr}(\frac{r^2}{\rho(r)}\frac{dp(r)}{dr}) = -G\frac{dm(r)}{dr}= -4\pi G r^2 \rho(r)$$
+Thus, the equation is free of $m(r)$. Dividing both sides by $r^2$,
+$$\frac{1}{r^2}\frac{d}{dr}(\frac{r^2}{\rho(r)}\frac{dp(r)}{dr}) = -4\pi G  \rho(r)$$
+Using polytropic EOS $p = K\rho^{1+\frac{1}{n}}$, along with factorization $\rho(r) = \rho_c\theta^n(r)$ such that $p(r) = K\rho_c^{1+\frac{1}{n}}\theta^{n+1}(r)$,
+$$\frac{K\rho_c^{\frac{1}{n}}}{r^2}\frac{d}{dr}(\frac{r^2}{\theta^n(r)}\frac{d}{dr}\theta^{n+1}(r)) = -4\pi G  \rho_c\theta^n(r)$$
+$$\to \frac{(n+1)K\rho_c^{\frac{1}{n}-1}}{4\pi G  }\frac{1}{r^2}\frac{d}{dr}(r^2\frac{d\theta(r)}{dr}) = -\theta^n(r)$$
+If we use scaled radius such that $r = \alpha \xi$  where $\alpha^2 = \frac{(n+1)K\rho_c^{\frac{1}{n}-1}}{4\pi G  }$, we obtain the final form
+$$\frac{1}{\xi^2}\frac{d}{d\xi}(\xi^2\frac{d\theta(\xi)}{d\xi}) + \theta^n(\xi) = 0$$
+
+
+Since $M = \int_0^R 4\pi r^2\rho(r)dr = \frac{4\pi \rho_c}{\alpha^3}\int_0^{\xi_n} \xi^2\theta^n(\xi)d\xi$, substituting $\theta^n$ from Lane-Emden equation yields,
+$$M = 4\pi \rho_c\alpha^3\int_0^{\xi_n} -\frac{d}{d\xi}(\xi^2\frac{d\theta(\xi)}{d\xi})d\xi$$
+Evaluating the integral, and substituting $R = \alpha\xi_n$,
+\begin{align}
+&	M = 4\pi \rho_c\alpha^3[-\xi^2\frac{d\theta(\xi)}{d\xi}]\bigg|_0^{\xi_n} = 4\pi \rho_c\alpha^3\xi^3_n[-\frac{\theta'(\xi_n)}{\xi_n}] & \\
+	&= 4\pi \rho_cR^3[-\frac{\theta'(\xi_n)}{\xi_n}] & 
+	% \nonumber forces that line to have no reference number
+	% the ampersand (&) is used to align the lines. the places you put them are at the same position in each line.
+\end{align}
+For the stars sharing same polytropic EOS, $\frac{R}{\alpha\xi_n}=1$, then
+$$\frac{4\pi G}{(n+1)K \xi_n^2}\rho_c^{\frac{n-1}{n}}R^2 =1$$
+Since $K$, $n$, $\xi_n$ and others are constant for same polytropic equation except $\rho_c$, $\rho_c \propto R^{\frac{-2n}{n-1}}$ . \\
+$$M \propto \rho_cR^3 \to M \propto R^{3-\frac{2n}{n-1}}=R^{\frac{3-n}{1-n}}$$
+
+
+\end{document}
