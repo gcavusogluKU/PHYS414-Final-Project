@@ -1,0 +1,126 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3608,        118]
+NotebookOptionsPosition[      3000,         99]
+NotebookOutlinePosition[      3436,        116]
+CellTagsIndexPosition[      3393,        113]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"LaneEmden", " ", "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"\[Xi]", "*", 
+      RowBox[{
+       RowBox[{"\[Theta]", "''"}], "[", "\[Xi]", "]"}]}], "+", 
+     RowBox[{"2", 
+      RowBox[{
+       RowBox[{"\[Theta]", "'"}], "[", "\[Xi]", "]"}]}], "+", 
+     RowBox[{"\[Xi]", "*", 
+      SuperscriptBox[
+       RowBox[{"\[Theta]", "[", "\[Xi]", "]"}], "n"]}]}], "==", " ", "0"}]}], 
+  ";", " ", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      FractionBox["1", 
+       SuperscriptBox["\[Xi]", "2"]], 
+      RowBox[{
+       SubscriptBox["\[PartialD]", "\[Xi]"], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         SuperscriptBox["\[Xi]", "2"], 
+         RowBox[{
+          SubscriptBox["\[PartialD]", "\[Xi]"], " ", 
+          RowBox[{"\[Theta]", "[", "\[Xi]", "]"}]}]}], ")"}]}]}], "+", 
+     SuperscriptBox[
+      RowBox[{"\[Theta]", "[", "\[Xi]", "]"}], "n"]}], "==", " ", "0"}], 
+   "*)"}]}]], "Input",
+ CellChangeTimes->{3.9454484855991917`*^9},
+ CellLabel->"In[1]:=",ExpressionUUID->"9ac6f18b-77e9-4227-ab37-e69fa201a369"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SeriesSolution", " ", "=", " ", 
+  RowBox[{"AsymptoticDSolveValue", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"LaneEmden", ",", " ", 
+      RowBox[{
+       RowBox[{"\[Theta]", "[", "0", "]"}], " ", "==", " ", "1"}]}], "}"}], 
+    ",", " ", 
+    RowBox[{"\[Theta]", "[", "\[Xi]", "]"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"\[Xi]", ",", "0", ",", "8"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{3.94544850539277*^9},
+ CellLabel->"In[2]:=",ExpressionUUID->"f5faa2b8-f4b5-4f5d-83df-997ab4e06e80"],
+
+Cell[BoxData[
+ RowBox[{"1", "-", 
+  FractionBox[
+   SuperscriptBox["\[Xi]", "2"], "6"], "+", 
+  FractionBox[
+   RowBox[{"n", " ", 
+    SuperscriptBox["\[Xi]", "4"]}], "120"], "+", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"5", " ", "n"}], "-", 
+      RowBox[{"8", " ", 
+       SuperscriptBox["n", "2"]}]}], ")"}], " ", 
+    SuperscriptBox["\[Xi]", "6"]}], "15120"], "+", 
+  FractionBox[
+   RowBox[{"n", " ", 
+    RowBox[{"(", 
+     RowBox[{"70", "-", 
+      RowBox[{"183", " ", "n"}], "+", 
+      RowBox[{"122", " ", 
+       SuperscriptBox["n", "2"]}]}], ")"}], " ", 
+    SuperscriptBox["\[Xi]", "8"]}], "3265920"]}]], "Output",
+ CellChangeTimes->{3.9454485090382247`*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"1cca03d8-eaa8-45c3-b54d-f2a766633158"]
+}, Open  ]]
+},
+WindowSize->{571.8, 627.},
+WindowMargins->{{Automatic, 325.20000000000005`}, {
+  69.60000000000002, Automatic}},
+FrontEndVersion->"13.1 for Microsoft Windows (64-bit) (June 16, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"7cc77995-40c8-4cee-857d-e8c8dc9e406d"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1080, 33, 56, "Input",ExpressionUUID->"9ac6f18b-77e9-4227-ab37-e69fa201a369"],
+Cell[CellGroupData[{
+Cell[1663, 57, 536, 13, 48, "Input",ExpressionUUID->"f5faa2b8-f4b5-4f5d-83df-997ab4e06e80"],
+Cell[2202, 72, 782, 24, 75, "Output",ExpressionUUID->"1cca03d8-eaa8-45c3-b54d-f2a766633158"]
+}, Open  ]]
+}
+]
+*)
+
