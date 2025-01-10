@@ -27,5 +27,8 @@ def plot_WD_data():
     plt.xlabel(r'$R_E$')
     plt.ylabel(r'$M_\odot$')
     plt.title('Mass vs Radius Relation of White Dwarfs')
-    plt.show()
 
+if __name__ == "__main__":
+    plot_WD_data()
+    plt.savefig('Plots/part-b.png')
+    plt.show()
