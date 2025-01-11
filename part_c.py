@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from scipy.integrate import solve_ivp
 
-def fit_WD_data(M,R,minR=0.15):
+def fit_WD_data(M,R,minR=1.5):
     def M_fit(R, A, n): #Curve_fit fitting function
         return A*R**((3-n)/(1-n))   #M ∝ R^((3-n)/(1-n))
     
@@ -42,7 +42,7 @@ def calc_central_density(M,R,dθdξn,ξn):
     RE = 6371000     #m, mean radius of earth
     return Ms*M/(4*np.pi*R**3*RE**3)/(-dθdξn/ξn)
 
-def fit_K(ρc,R,ξn,minR=0.15,n=3/2):
+def fit_K(ρc,R,ξn,minR=1.5,n=3/2):
     def K_fit(R, A): #Curve_fit fitting function
         return A*R**2
     
