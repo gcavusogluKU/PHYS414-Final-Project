@@ -17,7 +17,8 @@ def convert_to_radii(M, logg):
     RE = 6371000     #m, mean radius of earth
     M = Ms * M       #Convert from solar mass to CGS
     # g = G*M/R^2 -> R = (G*M/g)^(1/2)
-    R = np.sqrt(G*M/(10**logg))
+    g = 0.01 * 10**logg #Units in MKS
+    R = np.sqrt(G*M/g)
     return R/RE      #return R in terms of Earth radius
 
 def plot_WD_data():
