@@ -54,4 +54,4 @@ def fit_K(ρc,R,ξn,minR=1.5,n=3/2):
     solution = curve_fit(K_fit, _R, _ρc**(1/n-1), p0=(10,)) #Fit the data
     A = solution[0]  #Get fitting param A
     K = 4*np.pi*G/(ξn**2)/(n+1) * 1/A 
-    return K
+    return K[0]
