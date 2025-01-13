@@ -9,6 +9,10 @@
 \usepackage[export]{adjustbox}
 \usepackage{mathtools}
 \usepackage{hyperref}
+\usepackage{float}
+\usepackage{placeins}
+
+
 
 % you can define your own shortcuts etc, if you use sth very often
 \newcommand{\balign}{\begin{align}}
@@ -87,9 +91,9 @@ Since $M = \int_0^R 4\pi r^2\rho(r)dr = \frac{4\pi \rho_c}{\alpha^3}\int_0^{\xi_
 	M = 4\pi \rho_c\alpha^3\int_0^{\xi_n} -\frac{d}{d\xi}(\xi^2\frac{d\theta(\xi)}{d\xi})d\xi
 \end{equation}
 Evaluating the integral, and substituting $R = \alpha\xi_n$,
-\begin{align}\label{eq12,eq13}
+\begin{align}
 &	M = 4\pi \rho_c\alpha^3[-\xi^2\frac{d\theta(\xi)}{d\xi}]\bigg|_0^{\xi_n} = 4\pi \rho_c\alpha^3\xi^3_n[-\frac{\theta'(\xi_n)}{\xi_n}] & \\
-	&= 4\pi \rho_cR^3[-\frac{\theta'(\xi_n)}{\xi_n}] & 
+	&= 4\pi \rho_cR^3[-\frac{\theta'(\xi_n)}{\xi_n}] \label{eq13} & 
 	% \nonumber forces that line to have no reference number
 	% the ampersand (&) is used to align the lines. the places you put them are at the same position in each line.
 \end{align}
@@ -109,11 +113,11 @@ Using \texttt{Python} for reading and plotting the given white dwarf, we obtain 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.7\linewidth]{Plots/newton-part-b}
-	\caption{}
+	\includegraphics[width=1\linewidth]{Plots/newton-part-b}
+	%\caption{}
 	\label{fig:newton-part-b}
 \end{figure}
-
+\FloatBarrier
 
 \subsection{(c) Obtaining Fitting Parameters for White Dwarf Data}
 
@@ -139,61 +143,65 @@ After fitting the white dwarf data in \texttt{Python} for integer $q$, we obtain
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{Plots/newton-part-c1}
-	\caption{}
+	\includegraphics[width=1\linewidth]{Plots/newton-part-c1}
+	%\caption{}
 	\label{fig:newton-part-c1}
 \end{figure}
+\FloatBarrier
 
 Numerically solving Lane-Emden equation in \texttt{Python}, we obtain the solution for $n=\frac{3}{2}$ given below 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{Plots/newton-part-c2}
-	\caption{}
+	\includegraphics[width=1\linewidth]{Plots/newton-part-c2}
+	%\caption{}
 	\label{fig:newton-part-c2}
 \end{figure}
-
+\FloatBarrier
 
 By calculating the central densities of white dwarfs using \ref{eq13} and numerical solutions of Lane-Emden equation, we obtain the plot
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{Plots/newton-part-c3}
-	\caption{}
+	\includegraphics[width=1\linewidth]{Plots/newton-part-c3}
+	%\caption{}
 	\label{fig:newton-part-c3}
 \end{figure}
+\FloatBarrier
 
 After fitting the data for parameter $K$, we obtain $K = 2774995.74$ and using the parameters, we plot the fitting curve
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{Plots/newton-part-c4}
-	\caption{}
+	\includegraphics[width=1\linewidth]{Plots/newton-part-c4}
+	%\caption{}
 	\label{fig:newton-part-c4}
 \end{figure}
+\FloatBarrier
 
+\subsection{(d) Obtaining the Parameters C and D by Interpolation}
 
-\subsection{(d) Obtaining Parameter D by Interpolation}
-
-Using interpolation and solving IVPs using differential equations $\frac{dm}{dr} = 4\pi r^2 \rho$ and,
+Using interpolation and solving IVPs using hydrostatical differential equation $\frac{dm}{dr} = 4\pi r^2 \rho$ and the equation reduced for $\rho$
 
 \begin{equation}
 	\frac{d\rho}{dr} = -G \frac{\sqrt{x^2+1}}{8Cx^5}\frac{qm\rho^2}{r^2}
 \end{equation}
 
-we obtained that $D = 3022830886$ and C = $10960543496614858194944$.
+we obtained that $D = 3022830886$ and C = $1.96 \cdot 10^{22}$. Theoretical values of them were $D = \frac{m_{u}m_{e}^{3}c^{3}\mu_{e}}{3\pi^{2}\hbar^{3}} \approx 3934510$ and $C = \frac{m_{e}^{4}c^{5}}{24\pi^{2}\hbar^{3}} \approx 2.43 \cdot 10^{19}$. Approximately a thousand times of theoretical constants are found in the numerical calculation.
 
-\subsection{(e)}
+\subsection{(e) Obtaining the Complete Numerical Solution for Mass and Radii}
 
-Using parameters, numerical solution of white dwarf mass-radius relation is plotted as
+Using obtained parameters $C$ and $D$, numerical solution of white dwarf mass-radius relation is plotted as
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{Plots/newton-part-e}
-	\caption{}
+	\includegraphics[width=1\linewidth]{Plots/newton-part-e}
+	%\caption{}
 	\label{fig:newton-part-e}
 \end{figure}
+\FloatBarrier
 
+Chandrasekhar mass $M_{Ch}$ is found as $1.47M_\odot$.
 
 \section{Einstein}
 
@@ -211,11 +219,11 @@ Such that there is not explicit P-dependence. Instead of pressure, we can direct
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{Plots/einstein-part-a}
-	\caption{}
+	\includegraphics[width=1\linewidth]{Plots/einstein-part-a}
+	%\caption{}
 	\label{fig:einstein-part-a}
 \end{figure}
-
+\FloatBarrier
 \subsection{(b) Baryonic Mass and Fractional Binding Energy}
 
 Baryonic mass of the neutron stars are calculated by appending the equation \ref{eq23} to TOV equations,
@@ -226,34 +234,36 @@ Baryonic mass of the neutron stars are calculated by appending the equation \ref
 
 Fractional binding energy of the neutron stars is also given as $\Delta=\frac{M_P-M}{M}$. The plot of fractional binding energy for varying radii is provided below.
 
-\begin{figure}[!htb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{Plots/einstein-part-b}
-	\caption{}
+	\includegraphics[width=1\linewidth]{Plots/einstein-part-b}
+	%\caption{}
 	\label{fig:einstein-part-b}
 \end{figure}
+\FloatBarrier
 
 \subsection{(c) Stability of the Neutron Stars}
 
 The stability condition is given as $\frac{dM}{d\rho_c} > 0$. On our specific case, that $\rho_c$ is always increasing, thus $d\rho_c$ is always greater than zero. Then, reduced stability condition is $dM > 0$. Although the derivative can be calculated as an irregular derivative, in our specific case, the condition is simplified. $\Delta M$ is calculated using numerical differencing. The obtained stability curve of the neutron stars is provided below.
 
-\begin{figure}[!htb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{Plots/einstein-part-c}
-	\caption{}
+	\includegraphics[width=1\linewidth]{Plots/einstein-part-c}
+	%\caption{}
 	\label{fig:einstein-part-c}
 \end{figure}
-
+\FloatBarrier
 \subsection{(d) Maximum Neutron Star Masses}
 
 Maximal mass of neutron stars described by polytropic equation depends on the value of constant $K$. For $K = 100$, $M_{max} \approx 2$. Although maximal masses increase with increasing K, maximum observed neutron star mass $2.14M_\odot$ limits K. Calculations yield that maximum of allowed value of K is 114. Above this value, neutron star masses exceed the maximum observed value. Maximal mass depending on varying K values are provided below.
 
-\begin{figure}[!htb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{Plots/einstein-part-d}
-	\caption{}
-	\label{fig:einstein-part-d}
+	\includegraphics[width=1\linewidth]{Plots/einstein-part-d}
+	%\caption{}
+	%\label{fig:einstein-part-d}
 \end{figure}
+\FloatBarrier
 
 \subsection{(e) TOV Equation outside of Star}
 
