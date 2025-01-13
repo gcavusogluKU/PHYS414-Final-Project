@@ -21,7 +21,7 @@
 % here is where the document begins
 \begin{document}
 
-\title{PHYS 414 Term Project}
+\title{PHYS 414 Final Project}
 \author{G\"{o}rkem \c{C}avu\c{s}o\u{g}lu} % turkish characters require special handling
 \affiliation{Department of Physics, Ko\c{c} University, \\
 Rumelifeneri Yolu, 34450 Sariyer, Istanbul, Turkey }
@@ -87,7 +87,7 @@ Since $M = \int_0^R 4\pi r^2\rho(r)dr = \frac{4\pi \rho_c}{\alpha^3}\int_0^{\xi_
 	M = 4\pi \rho_c\alpha^3\int_0^{\xi_n} -\frac{d}{d\xi}(\xi^2\frac{d\theta(\xi)}{d\xi})d\xi
 \end{equation}
 Evaluating the integral, and substituting $R = \alpha\xi_n$,
-\begin{align}
+\begin{align}\label{eq12}{eq13}
 &	M = 4\pi \rho_c\alpha^3[-\xi^2\frac{d\theta(\xi)}{d\xi}]\bigg|_0^{\xi_n} = 4\pi \rho_c\alpha^3\xi^3_n[-\frac{\theta'(\xi_n)}{\xi_n}] & \\
 	&= 4\pi \rho_cR^3[-\frac{\theta'(\xi_n)}{\xi_n}] & 
 	% \nonumber forces that line to have no reference number
@@ -101,6 +101,100 @@ Since $K$, $n$, $\xi_n$ and others are constant for same polytropic equation exc
 \begin{equation}
 	M \propto \rho_cR^3 \to M \propto R^{3-\frac{2n}{n-1}}=R^{\frac{3-n}{1-n}}
 \end{equation}
+
+\newpage
+\subsection{(b) Mass versus Radius Distributions of White Dwarfs}
+
+Using \texttt{Python} for reading and plotting the given white dwarf, we obtain mass distributions as a function of radii. After calculating corresponding radii \texttt{R} for data, the distribution is plotted. 
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Plots/newton-part-b}
+	\caption{}
+	\label{fig:newton-part-b}
+\end{figure}
+
+
+\subsection{(c) Obtaining Fitting Parameters for White Dwarf Data}
+
+Given pressure equation for the white dwarfs,
+
+\begin{equation}
+	C(x( 2x^2 - 3)(x^2 + 1)^{-1/2} + 3sinh^{-1}(x))
+\end{equation}
+
+where $x$ is the scaled density parameter $(\frac{\rho}{D})^{\frac{1}{q}}$. After obtaining series expansion for the pressure as $x\to 0$ using \texttt{Mathematica}'s \texttt{Series} function, we get the leading parameter to approximate pressure for small $x$
+
+\begin{equation}
+	P \approx \frac{8C}{5}(\frac{\rho}{D})^{\frac{5}{q}}
+\end{equation}
+
+After arranging the leading term in the form $P \approx K_* \rho^{1+\frac{1}{n_*}}$, we obtain parameters $K_*$ and $n_*$ as,
+
+\begin{align}
+	n_* = \frac{q}{5-q} & \quad\quad\quad \And & K_* \frac{8C}{5D^{\frac{5}{q}}}
+\end{align}
+
+After fitting the white dwarf data in \texttt{Python} for integer $q$, we obtain $q=3$ and using fitting parameters, we can plot the curve for small $M$
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Plots/newton-part-c1}
+	\caption{}
+	\label{fig:newton-part-c1}
+\end{figure}
+
+Numerically solving Lane-Emden equation in \texttt{Python}, we obtain the solution for $n=\frac{3}{2}$ given below 
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Plots/newton-part-c2}
+	\caption{}
+	\label{fig:newton-part-c2}
+\end{figure}
+
+
+By calculating the central densities of white dwarfs using \ref{eq13} and numerical solutions of Lane-Emden equation, we obtain the plot
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Plots/newton-part-c3}
+	\caption{}
+	\label{fig:newton-part-c3}
+\end{figure}
+
+After fitting the data for parameter $K$, we obtain $K = 2774995.74$ and using the parameters, we plot the fitting curve
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Plots/newton-part-c4}
+	\caption{}
+	\label{fig:newton-part-c4}
+\end{figure}
+
+
+\subsection{(d) Obtaining Parameter D by Interpolation}
+
+Using interpolation and solving IVPs using differential equations $\frac{dm}{dr} = 4\pi r^2 \rho$ and,
+
+\begin{equation}
+	\frac{d\rho}{dr} = -G \frac{\sqrt{x^2+1}}{8Cx^5}\frac{qm\rho^2}{r^2}
+\end{equation}
+
+we obtained that $D = 3022830886$ and C = $10960543496614858194944$.
+
+\subsection{(e)}
+
+Using parameters, numerical solution of white dwarf mass-radius relation is plotted as
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Plots/newton-part-e}
+	\caption{}
+	\label{fig:newton-part-e}
+\end{figure}
+
+
 
 
 \end{document}
