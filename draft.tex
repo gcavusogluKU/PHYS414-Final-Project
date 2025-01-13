@@ -87,7 +87,7 @@ Since $M = \int_0^R 4\pi r^2\rho(r)dr = \frac{4\pi \rho_c}{\alpha^3}\int_0^{\xi_
 	M = 4\pi \rho_c\alpha^3\int_0^{\xi_n} -\frac{d}{d\xi}(\xi^2\frac{d\theta(\xi)}{d\xi})d\xi
 \end{equation}
 Evaluating the integral, and substituting $R = \alpha\xi_n$,
-\begin{align}\label{eq12}{eq13}
+\begin{align}\label{eq12,eq13}
 &	M = 4\pi \rho_c\alpha^3[-\xi^2\frac{d\theta(\xi)}{d\xi}]\bigg|_0^{\xi_n} = 4\pi \rho_c\alpha^3\xi^3_n[-\frac{\theta'(\xi_n)}{\xi_n}] & \\
 	&= 4\pi \rho_cR^3[-\frac{\theta'(\xi_n)}{\xi_n}] & 
 	% \nonumber forces that line to have no reference number
@@ -195,6 +195,87 @@ Using parameters, numerical solution of white dwarf mass-radius relation is plot
 \end{figure}
 
 
+\section{Einstein}
 
+\subsection{(a) Numerical Solutions of Tolman–Oppenheimer–Volkoff Equations}
+
+Using given polytropic definition of pressure $P = K\rho^2$, TOV equations converted into:
+
+\begin{align}
+		&\frac{dm}{dr} = 4\pi r^2\rho   & \\
+	&\frac{d\nu}{dr} = 2\frac{m+4\pi K\rho^2r^3}{r(r-2m)}  &  \\
+	&\frac{d\rho}{dr} = -\frac{m+4\pi K\rho^2 r^3}{r(r-2m)}\frac{1+K\rho}{2K} = -\frac{1}{2}\frac{1+K\rho}{2K}\nu'  &
+\end{align}
+
+Such that there is not explicit P-dependence. Instead of pressure, we can directly solve the TOV equations for density. Given initial conditions $\rho(0)=\rho_c$, $m(0)=0$, and $\nu(0)=0$, the coupled equations are integrated with \texttt{SciPy}'s \texttt{solve\_ivp} function. For provided central density values, mass and radii of neutron stars are obtained. The curve of mass-radius relation of neutron stars is given below.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Plots/einstein-part-a}
+	\caption{}
+	\label{fig:einstein-part-a}
+\end{figure}
+
+\subsection{(b) Baryonic Mass and Fractional Binding Energy}
+
+Baryonic mass of the neutron stars are calculated by appending the equation \ref{eq23} to TOV equations,
+
+\begin{equation}\label{eq23}
+	\frac{dm_P}{dr} = 4\pi (1-\frac{2m}{r})^{-1/2}r^2\rho
+\end{equation}
+
+Fractional binding energy of the neutron stars is also given as $\Delta=\frac{M_P-M}{M}$. The plot of fractional binding energy for varying radii is provided below.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Plots/einstein-part-b}
+	\caption{}
+	\label{fig:einstein-part-b}
+\end{figure}
+
+\subsection{(c) Stability of the Neutron Stars}
+
+The stability condition is given as $\frac{dM}{d\rho_c} > 0$. On our specific case, that $\rho_c$ is always increasing, thus $d\rho_c$ is always greater than zero. Then, reduced stability condition is $dM > 0$. Although the derivative can be calculated as an irregular derivative, in our specific case, the condition is simplified. $\Delta M$ is calculated using numerical differencing. The obtained stability curve of the neutron stars is provided below.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Plots/einstein-part-c}
+	\caption{}
+	\label{fig:einstein-part-c}
+\end{figure}
+
+\subsection{(d) Maximum Neutron Star Masses}
+
+Maximal mass of neutron stars described by polytropic equation depends on the value of constant $K$. For $K = 100$, $M_{max} \approx 2$. Although maximal masses increase with increasing K, maximum observed neutron star mass $2.14M_\odot$ limits K. Calculations yield that maximum of allowed value of K is 114. Above this value, neutron star masses exceed the maximum observed value. Maximal mass depending on varying K values are provided below.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Plots/einstein-part-d}
+	\caption{}
+	\label{fig:einstein-part-d}
+\end{figure}
+
+\subsection{(e) TOV Equation outside of Star}
+
+The differential equation of parameter $\nu$ outside of the star is reduced to the form
+\begin{equation}
+	\frac{d\nu}{dr} = \frac{2M}{r(r-2M)}
+\end{equation}
+Since we can factorize right-hand side as $\frac{1}{r-2M}-\frac{1}{r}$, we collect variables and differentials side by side, and put under integral sign as
+
+\begin{equation}
+	\int_R^{r}d\nu  =\int_R^{r}\frac{dr'}{r'-2M}-\int_R^{r}\frac{dr'}{r'}
+\end{equation}
+
+After integrating, we obtain
+
+\begin{equation}
+	\nu(r)-\nu(R)  = ln(r-2M)-ln(R-2M)-(ln(r)-ln(R))
+\end{equation}
+Then simplifying it yields the final form for $r > R$
+
+\begin{equation}
+	\nu(r > R)  = ln(1-\frac{2M}{r})-ln(1-\frac{2M}{R}) + \nu(R)
+\end{equation}
 
 \end{document}
